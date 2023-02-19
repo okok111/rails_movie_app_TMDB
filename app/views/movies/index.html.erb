@@ -3,6 +3,7 @@
 <p>直感で検索したい方は<%= link_to "こちらへ", posts_path %> </p>
 <br>
 ※空欄で検索ボタンを押すとエラーが出ます。
+<%= paginate @movies %>
 <div class="search">
     <%= form_tag(root_path, method: :get) do %>
         <%= search_field_tag :looking_for, nil, placeholder: 'Movie Title...' , :size => "40*40" %>
@@ -10,7 +11,7 @@
     <% end %>
 </div>
 <div class = "movies-container">
-    <% @movies['results'].each do |movie| %>
+    <% @movies.each do |movie| %>
         <div class = "movie-data">
             <p><%= movie['title'] %></p>
             <%= link_to movie_path(movie['id']) do %>
