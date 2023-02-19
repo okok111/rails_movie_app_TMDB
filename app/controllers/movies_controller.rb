@@ -3,11 +3,11 @@ class MoviesController < ApplicationController
   def index
     if params[:looking_for]
       movie_title = params[:looking_for]
-      url = CGI.escape("https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API']}&language=ja&query=" + movie_title)
+      url = "https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API']}&language=ja&query=" + URI.encode_www_form_component(movie_title)
     else
       url = "https://api.themoviedb.org/3/movie/popular?api_key=#{ENV['TMDB_API']}&language=ja"
     end
-    @movies = JSON.parse(Net::HTTP.get(URI.parse(url))) 
+    @movies = JSON.parse(Net::HTTP.get(URI.parse(url)))
   end
 
   def show

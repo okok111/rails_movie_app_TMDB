@@ -1,13 +1,13 @@
 <h1>posts#new</h1>
 <%= form_for @post do |f| %>
-<div class="field">
-    <%= f.label :title %>
-    <p><%= f.text_field :title, :size => 20 %></p>
-    <%= f.label :image %>
-    <p><%= f.file_field :image %></p>
-    <%= f.label :contents %>
-    <p><%= f.text_field :contents, :size => 20 %></p>
-</div>
-<%= f.submit "postする" %>
+    <div class="field">
+        <%= f.label :title %>
+        <p> <%= f.text_field :title, :size => 140, value: @movie['title']%> </p>
+        <%= f.label :image %>
+        <p><%= f.hidden_field :image, value: 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'] %></p>
+        <%= f.label :contents %>
+        <p> <%= f.text_field :contents, :size => 140, value: @movie['overview'] %></p>
+    </div>
+    <%= f.submit "postする" %>
 <% end %>
 <%= link_to "post一覧に戻る", posts_path %>

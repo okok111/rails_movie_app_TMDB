@@ -1,13 +1,9 @@
 <h1>posts#show</h1>
 <div class="post">
     <p><%= @post.title %></p>
-    <p>
-        <% if @post.image.present? %>
-            <%= image_tag @post.image_url, size: '250x200'%>
-        <% else %>
-            <%= image_tag "nonono.png", size: '250x200' %>
-        <% end %>
-    </p>
+    <% if @post.image.present? %>
+        <p><%= image_tag @post.image %></p>
+    <% end %>
     <% if user_signed_in? %>
         <% if current_user.already_liked?(@post) %>
             <%= link_to post_like_path(id: @post.id, post_id: @post.id), method: :delete do %>

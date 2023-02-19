@@ -5,13 +5,11 @@
         <div class="post">
             <p><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></p>
             <p><%= t.title %></p>
-            <p>
-                <% if t.image.present? %>
-                    <%= image_tag t.image_url, size: '250x200'%>
-                <% else %>
-                    <%= image_tag "nonono.png", size: '250x200' %>
+            <% if t.image.present? %>
+                <%= link_to post_path(t.id) do %>
+                    <p><%= image_tag t.image %></p>
                 <% end %>
-            </p>
+            <% end %>
             <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                     <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
@@ -25,10 +23,9 @@
             <% else %>
                 <i class="far fa-heart fa-2x"></i><%= t.likes.count %>
             <% end %>
-            <p><%= t.contents %></p>
             <%= link_to "詳細へ", post_path(t.id) %>
             <% if user_signed_in? %>
-                <%= link_to "編集する", edit_post_path(t.id) %>
+                <%#= link_to "編集する", edit_post_path(t.id) %>
                 <%= link_to "削除する", post_path(t.id), method: :delete %>
             <% end %>
         </div>
