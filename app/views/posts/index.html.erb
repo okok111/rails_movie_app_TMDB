@@ -2,7 +2,6 @@
 <%= link_to "新規投稿へ", new_post_path %>
 <div class="posts-container">
     <% @posts.each do |t| %>
-        <%= link_to post_path(t.id) do %>
         <div class="post">
             <p><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></p>
             <p><%= t.title %></p>
@@ -33,6 +32,5 @@
                 <%= link_to "削除する", post_path(t.id), method: :delete %>
             <% end %>
         </div>
-        <% end %>
     <% end %>
 </div>
