@@ -56,3 +56,4 @@ gem 'carrierwave' , '~> 1.3' ,  '>= 1.3.1'
 gem 'cloudinary'
 gem 'dotenv-rails'
 gem 'kaminari'
+gem "pg", "~> 1.4"

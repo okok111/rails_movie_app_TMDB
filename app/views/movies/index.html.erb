@@ -1,10 +1,10 @@
 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<h1>movies#index</h1>
 <p>こちらは『映画名検索＆投稿』ページです。</p>
-<p>直感で検索したい方は<%= link_to "こちらへ", posts_path %> </p>
-<br>
-※空欄で検索ボタンを押すとエラーが出ます。
+<p>投稿一覧は<%= link_to "こちらへ", posts_path %></p>
 <%= paginate @movies %>
 <div class="search">
+※最大100件まで取得
     <%= form_tag(root_path, method: :get) do %>
         <%= search_field_tag :looking_for, nil, placeholder: 'Movie Title...' , :size => "40*40" %>
         <%= submit_tag 'search' %>
@@ -23,3 +23,4 @@
         </div>
     <% end %>
 </div>
+<%= paginate @movies %>

@@ -1,5 +1,6 @@
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
 <h1>posts#index</h1>
-<%= link_to "新規投稿へ", new_post_path %>
+<p>映画一覧、作品検索は<%= link_to "こちらへ", movies_path %></p>
 <div class="posts-container">
     <% @posts.each do |t| %>
         <div class="post">
