@@ -20,7 +20,7 @@ class PostsController < ApplicationController
             redirect_to :action => "new"
         end
     end
-    
+
     def show
         @post = Post.find(params[:id])
         @comments = @post.comments
@@ -49,6 +49,6 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:title, :contents ,:image)
+        params.require(:post).permit(:title, :contents ,:image ,:overview)
     end
 end

@@ -12,7 +12,6 @@ class MoviesController < ApplicationController
           movies.concat(result["results"])
         end
       end
-      @movies = Kaminari.paginate_array(movies).page(params[:page]).per(16)
     else
       movies = []
       (1..5).each do |page|
@@ -23,8 +22,8 @@ class MoviesController < ApplicationController
           movies.concat(result["results"])
         end
       end
-      @movies = Kaminari.paginate_array(movies).page(params[:page]).per(16)
     end
+    @movies = Kaminari.paginate_array(movies).page(params[:page]).per(16)
   end
 
   def show
