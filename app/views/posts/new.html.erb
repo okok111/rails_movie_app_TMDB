@@ -1,12 +1,16 @@
 <h1>posts#new</h1>
 <%= form_for @post do |f| %>
     <div class="field">
-        <%= f.label :title %>
-        <p> <%= f.hidden_field :title, :size => 140, value: @movie['title']%> </p>
-        <%= f.label :image %>
+        <p><%= f.label :title %>:<%= @movie['title']%></p>
+        <p><%= f.hidden_field :title, :size => 140, value: @movie['title']%></p>
+
+        <p><%= image_tag 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'] %></p>
         <p><%= f.hidden_field :image, value: 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'] %></p>
-        <%= f.label :contents %>
-        <p> <%= f.hidden_field :contents, :size => 140, value: @movie['overview'] %></p>
+
+        <p><%= f.label :overview %>:<%= @movie['overview']%></p>
+        <p><%= f.hidden_field :overview, :size => 140, value: @movie['overview'] %></p>
+        <%= f.label :contents,"感想" %>
+        <p><%= f.text_area :contents, :size => "20x5"%></p>
     </div>
     <%= f.submit "postする" %>
 <% end %>
