@@ -29,6 +29,19 @@ class MoviesController < ApplicationController
   def show
     movie_id = params[:id]
     url = "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{ENV['TMDB_API']}&language=ja"
-    @movie = JSON.parse(Net::HTTP.get(URI.parse(url)))
+    response = Net::HTTP.get_response(URI.parse(url))
+    if response.code == "200"
+      @movie = JSON.parse(response.body)
+      if @movie["overview"].blank?
+        url_en = "https://api.themoviedb.org/3/movie/#{movie_id}?api_key=#{ENV['TMDB_API']}&language=en"
+        response_en = Net::HTTP.get_response(URI.parse(url_en))
+        if response_en.code == "200"
+          movie_en = JSON.parse(response_en.body)
+          @movie["overview"] = movie_en["overview"]
+        end
+      end
+    else
+      @movie = nil
+    end
   end
 end
