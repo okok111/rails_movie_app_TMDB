@@ -1,10 +1,43 @@
-// Place all the styles related to the movies controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.movies-container{
+.movies-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #141414;
+    padding: 20px;
 }
-.movie-data{
-    width: 25%;
+
+.movie-data {
+    width: 23%;
+    margin-bottom: 30px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    .movie-title{
+        width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-img {
+        display: block;
+        border-radius: 5px;
+        width: 100%;
+        height: auto;
+    }
+    p {
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
 }
+
+.movie-data:hover {
+    transform: scale(1.05);
+}
+
