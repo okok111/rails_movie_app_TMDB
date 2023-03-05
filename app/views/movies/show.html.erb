@@ -1,9 +1,18 @@
 <div class="movie-detail">
-    <p><%= @movie['title'] %></p>
-    <p><%= @movie['release_date'] %></p>
+  <div class="movie-info-with-image">
     <% if @movie['poster_path'] %>
-        <p><%= image_tag 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'],class: "card-size" %></p>
+      <%= image_tag 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'], class: "card-size" %>
     <% end %>
-    <p><%= @movie['overview'] %></p>
-    <%= link_to "投稿ページへ", new_post_path(movie_id: @movie['id']) ,class:'postbtn' %>
+    <div class="movie-info">
+      <div class="movie-header">
+        <h2><%= @movie['title'] %></h2>
+        <p><%= @movie['runtime'] %> 分</p>
+        <p><%= @movie['release_date'] %> 公開</p>
+      </div>
+      <div class="movie-overview">
+        <p><%= @movie['overview'] %></p>
+      </div>
+    </div>
+  </div>
+   <%= link_to "投稿ページへ", new_post_path(movie_id: @movie['id']), class:'postbtn' %>
 </div>

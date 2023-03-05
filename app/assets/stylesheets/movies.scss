@@ -1,3 +1,4 @@
+// movies/index.html.erb
 .movies-container {
     display: flex;
     flex-wrap: wrap;
@@ -41,3 +42,73 @@
     transform: scale(1.05);
 }
 
+// movies/show.html.erb
+
+/* 基本設定 */
+.movie-detail {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-size {
+    //   width: 200px;
+    //   height: 300px;
+    object-fit: cover;
+}
+
+.movie-info-with-image {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #222;
+    width: 100%;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: #fff;
+}
+
+.movie-header {
+    margin-bottom: 20px;
+    h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.movie-detail a.postbtn {
+    display: block;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 60%;
+    margin: 20px auto;
+    text-decoration: none;
+    border-radius: 5px;
+    
+  }
+  
+  .movie-detail a.postbtn:hover {
+    background-color: #3e8e41;
+  }
+/* スマホサイズ */
+@media screen and (max-width: 480px) {
+    .movie-info-with-image {
+    flex-direction: column;
+    }
+    
+    .card-size {
+        width: 100%;
+        height: auto;
+    }
+    
+    .movie-info {
+        width: 100%;
+        padding: 10px;
+    }
+}
